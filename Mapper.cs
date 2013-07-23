@@ -81,7 +81,7 @@ namespace InstaSharp {
 
         private static IList Map(Type t, JArray json) {
             var type = t.GetGenericArguments()[0];
-            // This will produce List<Image> or whatever the original element type is
+            // This will produce List<MediaObject> or whatever the original element type is
             var listType = typeof(List<>).MakeGenericType(type);
             var result = (IList)Activator.CreateInstance(listType);
 
