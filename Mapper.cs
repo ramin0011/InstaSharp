@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
-using Newtonsoft.Json.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
+
+using Newtonsoft.Json.Linq;
 
 namespace InstaSharp {
     class Mapper {
         public static object Map<T>(string json) where T : new() {
-
-            //var t = new T();
             var j = JObject.Parse(json);
             var t = typeof(T);
 
@@ -98,8 +95,8 @@ namespace InstaSharp {
         private static DateTime UnixTimeStampToDateTime(string unixTimeStamp) {
             // Unix timestamp is seconds past epoch
             double unixTime = Convert.ToDouble(unixTimeStamp);
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            dtDateTime = dtDateTime.AddSeconds(unixTime).ToLocalTime();
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTime);
             return dtDateTime;
         }
 
