@@ -82,7 +82,17 @@ namespace InstaSharp.Endpoints.Users {
 			return (MediasResponse) Mapper.Map<MediasResponse>(RecentJson(maxId, minId, count, null, minTimestamp, maxTimestamp));
 		}
 
+		public MediasResponse Recent(string maxId, string minId, int count, DateTime? minTimestamp, DateTime? maxTimestamp)
+		{
+			return (MediasResponse) Mapper.Map<MediasResponse>(RecentJson(maxId, minId, count, null, minTimestamp, maxTimestamp));
+		}
+
 		public MediasResponse Recent(string maxId, string minId, int count, int? userID, DateTime minTimestamp, DateTime maxTimestamp)
+		{
+			return (MediasResponse) Mapper.Map<MediasResponse>(RecentJson(maxId, minId, count, userID, minTimestamp, maxTimestamp));
+		}
+
+		public MediasResponse Recent(string maxId, string minId, int count, int? userID, DateTime? minTimestamp, DateTime? maxTimestamp)
 		{
 			return (MediasResponse) Mapper.Map<MediasResponse>(RecentJson(maxId, minId, count, userID, minTimestamp, maxTimestamp));
 		}
